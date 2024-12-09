@@ -3,10 +3,11 @@
 import { useState, useEffect } from 'react'
 import Link from "next/link"
 import { Heart, Menu, Search, ShoppingCart, User, X } from 'lucide-react'
+import Router from 'next/router'
+
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -32,9 +33,6 @@ export default function NavBar() {
   return (
     <nav className="bg-[#FBEBB5] px-6 py-4">
       <div className="flex items-center justify-between">
-        {/* Left Section */}
-
-
         {/* Center Section (Navigation Links) */}
         <div className="hidden md:flex space-x-14 ml-20 items-center justify-center w-full">
           <NavLinks />
@@ -69,7 +67,7 @@ function NavLinks({ mobile = false }: { mobile?: boolean }) {
 
   return (
     <>
-      <Link className={linkClass} href="/">
+      <Link className={linkClass} href="/home">
         Home
       </Link>
       <Link className={linkClass} href="/shop">
@@ -81,6 +79,10 @@ function NavLinks({ mobile = false }: { mobile?: boolean }) {
       <Link className={linkClass} href="/contact">
         Contact
       </Link>
+      <Link className={linkClass} href="/login">
+        {/* Adding Login Link */}
+        Login
+      </Link>
     </>
   )
 }
@@ -88,18 +90,27 @@ function NavLinks({ mobile = false }: { mobile?: boolean }) {
 function NavIcons() {
   return (
     <>
-      <button className="p-2">
-        <User className="h-5 w-5" />
-        <span className="sr-only">Account</span>
-      </button>
+      {/* Login Button */}
+      <Link href="/login">
+        <button className="p-2">
+          <User className="h-5 w-5" />
+          <span className="sr-only">Login</span>
+        </button>
+      </Link>
+
+      {/* Search Button */}
       <button className="p-2">
         <Search className="h-5 w-5" />
         <span className="sr-only">Search</span>
       </button>
+
+      {/* Wishlist Button */}
       <button className="p-2">
         <Heart className="h-5 w-5" />
         <span className="sr-only">Wishlist</span>
       </button>
+
+      {/* Cart Button */}
       <button className="p-2">
         <ShoppingCart className="h-5 w-5" />
         <span className="sr-only">Cart</span>

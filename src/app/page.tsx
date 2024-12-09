@@ -4,14 +4,16 @@ import MainTwo from "@/components/main-two";
 
 
 
+
 export default function Home() {
   return (
    <>
-
+<h1>Login Page</h1>
    <Header />
    <ProductShowcase />
    <MainTwo />
-
+  
+   
    </>
   );
 }
